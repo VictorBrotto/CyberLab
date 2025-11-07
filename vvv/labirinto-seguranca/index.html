@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberLab - Labirinto de Segurança</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="scan-line"></div>
+    
+    <div class="floating-icons">
+    </div>
+    
+    <div class="score-display">
+        <i class="fas fa-shield-alt"></i>
+        <span>Pontuação: <span id="score">0</span></span>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-lock"></i> CYBERLAB</h1>
+            <p class="subtitle">Labirinto de Segurança - TechNova</p>
+        </div>
+        
+        <div class="progress-container">
+            <div class="stage-indicator">
+                <span>Status: <span id="status">Operacional</span></span>
+                <span id="stage-indicator">Etapa 1 de 8</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+        <div class="scene active" id="scene0">
+            <h2><i class="fas fa-terminal"></i> O Desafio da TechNova</h2>
+            <div class="situation active">
+                <p>A empresa "TechNova" sofreu tentativas de invasão recentemente. Como analista de segurança, você é responsável por proteger o ambiente e manter os serviços online.</p>
+                <p><strong>Objetivo:</strong> Terminar a missão com zero incidentes graves e dados protegidos.</p>
+            </div>
+            <p>Cada decisão que você tomar terá consequências. Escolha sabiamente para proteger a TechNova!</p>
+            <button class="btn" onclick="nextScene(1)">Iniciar Missão <i class="fas fa-play"></i></button>
+        </div>
+        
+        <div class="scene" id="scene1">
+            <h2><i class="fas fa-chart-line"></i> Fundamentos e Análise de Riscos</h2>
+            <div class="situation">
+                <p>Situação: O servidor da TechNova está exposto à internet. Você precisa decidir o primeiro passo para proteger a empresa.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(1, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Publicar o sistema direto na nuvem, sem restrições.</p>
+                </div>
+                <div class="option" onclick="selectOption(1, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Fazer uma análise de riscos antes da publicação.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Gestão de riscos e planejamento preventivo.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene2">
+            <h2><i class="fas fa-user-shield"></i> Políticas e Planos de Segurança</h2>
+            <div class="situation">
+                <p>Situação: A equipe de desenvolvimento solicita acesso total aos servidores para agilizar o trabalho.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(2, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Conceder acesso irrestrito (mais rápido).</p>
+                </div>
+                <div class="option" onclick="selectOption(2, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Criar política de senhas, perfis e controle de acesso.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Princípio do menor privilégio, políticas de segurança e conformidade.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene3">
+            <h2><i class="fas fa-file-contract"></i> Auditoria e Normas</h2>
+            <div class="situation">
+                <p>Situação: Um cliente importante exige comprovação de conformidade com normas de segurança.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(3, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Ignorar normas, "já temos antivírus".</p>
+                </div>
+                <div class="option" onclick="selectOption(3, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Implementar controles baseados na ISO 27001 e LGPD.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Auditoria, conformidade e frameworks (ISO, NIST, LGPD).
+            </div>
+        </div>
+        
+        <div class="scene" id="scene4">
+            <h2><i class="fas fa-network-wired"></i> Firewalls, IDS/IPS e Monitoramento</h2>
+            <div class="situation">
+                <p>Situação: O sistema detecta tráfego suspeito vindo do exterior, com várias tentativas de acesso não autorizado.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(4, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Abrir todas as portas para facilitar a comunicação.</p>
+                </div>
+                <div class="option" onclick="selectOption(4, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Configurar firewall e IDS para análise e bloqueio.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Camadas de defesa e resposta a eventos de rede.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene5">
+            <h2><i class="fas fa-bug"></i> Softwares Maliciosos</h2>
+            <div class="situation">
+                <p>Situação: Um e-mail de "fatura urgente" chega ao setor financeiro com um anexo suspeito.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(5, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>O funcionário abre o anexo para verificar a fatura.</p>
+                </div>
+                <div class="option" onclick="selectOption(5, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Treinar a equipe sobre phishing e reportar o e-mail.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Engenharia social e conscientização.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene6">
+            <h2><i class="fas fa-globe"></i> Proteção de Aplicações Web</h2>
+            <div class="situation">
+                <p>Situação: O site da empresa usa formulários sem validação adequada, conforme relatado em um teste de segurança.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(6, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Ignorar, "ninguém vai invadir".</p>
+                </div>
+                <div class="option" onclick="selectOption(6, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Implementar filtros e segurança de aplicações web (WAF).</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Proteção de aplicações e segurança web.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene7">
+            <h2><i class="fas fa-key"></i> Criptografia e Proteção de Dados</h2>
+            <div class="situation">
+                <p>Situação: Os dados de clientes são armazenados sem criptografia no banco de dados principal.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(7, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Armazenar em texto simples (é mais rápido).</p>
+                </div>
+                <div class="option" onclick="selectOption(7, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Criptografar os dados e usar chaves seguras.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Confidencialidade e integridade da informação.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene8">
+            <h2><i class="fas fa-exclamation-triangle"></i> Detecção e Resposta a Incidentes</h2>
+            <div class="situation">
+                <p>Situação: O sistema de detecção de intrusos (IDS) detecta anomalias no tráfego de rede durante a madrugada.</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="selectOption(8, 'A')">
+                    <div class="option-title">Opção A</div>
+                    <p>Ignorar o alerta (provavelmente é um falso positivo).</p>
+                </div>
+                <div class="option" onclick="selectOption(8, 'B')">
+                    <div class="option-title">Opção B</div>
+                    <p>Acionar o plano de resposta a incidentes imediatamente.</p>
+                </div>
+            </div>
+            <div class="concept">
+                <strong>Conceito:</strong> Ciclo de resposta: detecção → contenção → erradicação → recuperação.
+            </div>
+        </div>
+        
+        <div class="scene" id="scene9">
+            <div class="final-result">
+                <h2><i class="fas fa-trophy"></i> Missão Concluída!</h2>
+                <p>Você completou todas as decisões de segurança da TechNova.</p>
+                
+                <div class="result" id="final-result">
+                </div>
+                
+                <p id="result-description"></p>
+                
+                <button class="btn" onclick="restartGame()">Jogar Novamente <i class="fas fa-redo"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
